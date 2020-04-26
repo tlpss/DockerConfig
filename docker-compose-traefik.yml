@@ -42,4 +42,4 @@ services:
       - traefik
      
   networks:
-    traefik
+    traefik: {}
