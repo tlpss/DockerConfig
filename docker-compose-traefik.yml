@@ -37,6 +37,16 @@ services:
     image: "containous/whoami"
     labels:
       - "traefik.enable=true"
+      - traefik.http.middlewares.whoami-redirect-web-secure.redirectscheme.scheme=https
+      - traefik.http.routers.whoami.middlewares=whoami-redirect-web-secure
+      - traefik.http.routers.whoami.rule=Host(`whoami.domain.com`)
+      - traefik.http.routers.whoami.entrypoints=web
+      - traefik.http.routers.whoami-secure.rule=Host(`whoami.domain.com`)
+      - traefik.http.routers.whoami-secure.tls.certresolver=myresolver
+      - traefik.http.routers.whoami-secure.tls=true
+      - traefik.http.routers.whoami-secure.entrypoints=websecure
+      
+      
       - "traefik.http.routers.whoami.rule=Host(`whoami.tlips.be`)"
       - "traefik.http.routers.whoami.entrypoints=web"
       #- "traefik.http.routers.whoami.tls.certresolver=myresolver"
