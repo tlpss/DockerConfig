@@ -1,1 +1,14 @@
+version: "3"
 
+services:
+  traefik:
+    image: traefik:latest
+    volumes:
+    
+
+
+networks:
+  web:
+    external: true
+  internal:
+    external: false
