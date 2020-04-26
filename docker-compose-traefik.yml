@@ -6,8 +6,11 @@ services:
     image: "traefik:v2.2"
     container_name: "traefik"
     command:
+      #log
       - "--log.level=DEBUG"
+      #expose dashboard
       - "--api.insecure=true"
+      #docker 
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       #https
@@ -33,7 +36,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`whoami.tlips.be`)"
-      - "traefik.http.routers.whoami.entrypoints=web"
+      - "traefik.http.routers.whoami.entrypoints=websecure"
       - "traefik.http.routers.whoami.tls.certresolver=myresolver"
     network:
       - traefik
