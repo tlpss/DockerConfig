@@ -24,7 +24,6 @@ services:
 
   whoami:
     image: "containous/whoami"
-    container_name: "simple-service"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`tlips.be`)"
