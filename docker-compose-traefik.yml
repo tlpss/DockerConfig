@@ -42,8 +42,7 @@ services:
 
     networks:
       - traefik
-    ports:
-      -443:80
+
      
 networks:
   traefik: {}
