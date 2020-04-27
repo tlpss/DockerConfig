@@ -26,8 +26,8 @@ services:
   redis:
     image: redis:latest
     container_name: redis
-     grafana:
-     
+    
+  grafana:
     image: grafana/grafana:latest
     container_name: grafana
     environment:
