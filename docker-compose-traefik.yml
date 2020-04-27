@@ -10,6 +10,7 @@ services:
       - "--log.level=DEBUG"
       #activate dashboard
       - "--api.dashboard=true"
+      - "--api.insecure=true"
       #docker 
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
