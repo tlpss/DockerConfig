@@ -38,10 +38,10 @@ services:
       # Dashboard
       - "traefik.http.routers.traefik.rule=Host(`tlips.be`)"
       - "traefik.http.routers.traefik.service=api@internal"
-      #- "traefik.http.routers.traefik.middlewares=admin"
+      - "traefik.http.routers.traefik.middlewares=admin"
       - "traefik.http.routers.traefik.tls.certresolver=myresolver"
       - "traefik.http.routers.traefik.entrypoints=websecure"
-      #- "traefik.http.middlewares.admin.basicauth.users=admin:dummy_password"
+      - "traefik.http.middlewares.admin.basicauth.users=admin:{SHA}0DPiKuNIrrVmD8IUCuw1hQxNqZc="
     ports:
       - "80:80"
       - "443:443"
