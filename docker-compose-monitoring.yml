@@ -11,8 +11,6 @@ services:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
     - cadvisor
-    ports:
-    - 9100:9100
     networks:
     - monitor
   
@@ -20,7 +18,9 @@ services:
     image: prom/node-exporter:latest
     container_name: node-exporter
     networks:
-      - monitor
+    - monitor
+    ports:
+    - 9100:9100
   
   cadvisor:
     image: google/cadvisor:latest
