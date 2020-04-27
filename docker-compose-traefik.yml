@@ -23,6 +23,14 @@ services:
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
       #http
       - "--entrypoints.web.address=:80"
+    labels:
+      #  redirect middleware
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      
+      # global redirect to https
+      - "traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)"
+      - "traefik.http.routers.redirs.entrypoints=web"
+      - "traefik.http.routers.redirs.middlewares=redirect-to-https"
     ports:
       - "80:80"
       - "443:443"
