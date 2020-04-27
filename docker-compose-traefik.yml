@@ -41,7 +41,7 @@ services:
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
       - "traefik.http.routers.traefik.tls.certresolver=myresolver"
       - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.middlewares.traefik-auth.basicauth.userfile=/basic-auth-userfiles/traefik-dashboard"
+      - "traefik.http.middlewares.traefik-auth.basicauth.usersfile=/basic-auth-userfiles/traefik-dashboard"
     ports:
       - "80:80"
       - "443:443"
