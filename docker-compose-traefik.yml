@@ -9,6 +9,7 @@ services:
       #log
       - "--log.level=DEBUG"
       #activate dashboard
+      - "--api=true"
       - "--api.dashboard=true"
       - "--api.insecure=true"
       #docker 
@@ -25,6 +26,8 @@ services:
       #http
       - "--entrypoints.web.address=:80"
     labels:
+      # enable traefik
+      - "traefik.enable=true"
       #  redirect middleware
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
       
