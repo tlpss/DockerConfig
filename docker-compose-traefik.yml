@@ -53,6 +53,7 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks: 
       - traefik
+      - monitor
 
   whoami:
     image: "containous/whoami"
@@ -69,3 +70,4 @@ services:
      
 networks:
   traefik: {}
+  monitor: {}
