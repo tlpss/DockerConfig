@@ -41,12 +41,13 @@ services:
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
       - "traefik.http.routers.traefik.tls.certresolver=myresolver"
       - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$36an5d0r$$8/7qf8N0toHNi6MHYNr5s."
+      - "traefik.http.middlewares.traefik-auth.basicauth.userfile=/basic-auth-userfiles/traefik-dashboard"
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - "$PWD/../Volumes/letsencrypt:/letsencrypt"
+      - "$PWD/../Volumes/traefik/letsencrypt:/letsencrypt"
+      - "$PWD/../Volumes/traefik/basic-auth-userfiles:/basic-auth-userfiles"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks: 
       - traefik
