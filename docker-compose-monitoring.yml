@@ -4,7 +4,7 @@ services:
     image: prom/prometheus:latest
     container_name: prometheus
     ports:
-    - 9090:9090
+    #- 9090:9090
     command:
     - --config.file=/etc/prometheus/prometheus.yml
     volumes:
@@ -54,15 +54,18 @@ services:
     depends_on:
       - prometheus
     ports:
-      - "3000:3000"
+      #- "3000:3000"
     volumes:
       - $PWD/../Volumes/grafana:/var/lib/grafana
     networks: 
     - monitor
     - traefik
+    labels:
+    - "traefik.enable=true" 
+    - "traefik.http.routers.whoami.rule=Host(`grafana.tlips.be`)"
+    - "traefik.http.routers.whoami.entrypoints=websecure"
+    - "traefik.http.routers.whoami.tls.certresolver=myresolver"
 
-      
-    
 networks:
   monitor:
     external: true
