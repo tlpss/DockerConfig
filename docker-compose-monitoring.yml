@@ -40,6 +40,5 @@ services:
       - "3000:3000"
     volumes:
       - $PWD/../Volumes/grafana:/var/lib/grafana
-    logging:
-      driver: none
+    
     
