@@ -8,8 +8,8 @@ services:
     command:
       #log
       - "--log.level=DEBUG"
-      #expose dashboard
-      - "--api.insecure=true"
+      #activate dashboard
+      - "--api.dashboard=true"
       #docker 
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
@@ -35,10 +35,10 @@ services:
       # Dashboard
       - "traefik.http.routers.traefik.rule=Host(`tlips.be`)"
       - "traefik.http.routers.traefik.service=api@internal"
-      - "traefik.http.routers.traefik.middlewares=admin"
+      #- "traefik.http.routers.traefik.middlewares=admin"
       - "traefik.http.routers.traefik.tls.certresolver=myresolver"
       - "traefik.http.routers.traefik.entrypoints=websecure"
-      - "traefik.http.middlewares.admin.basicauth.users=admin:dummy_password"
+      #- "traefik.http.middlewares.admin.basicauth.users=admin:dummy_password"
     ports:
       - "80:80"
       - "443:443"
