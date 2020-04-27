@@ -13,6 +13,11 @@ services:
     - cadvisor
     networks:
     - monitor
+  
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+  
   cadvisor:
     image: google/cadvisor:latest
     container_name: cadvisor
@@ -27,11 +32,14 @@ services:
     - redis
     networks: 
     - monitor
+  
+  node
   redis:
     image: redis:latest
     container_name: redis
     networks:
     - monitor
+    
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -48,9 +56,14 @@ services:
       - $PWD/../Volumes/grafana:/var/lib/grafana
     networks: 
     - monitor
+    - traefik
+
+      
     
 networks:
   monitor:
+    external: true
+  traefik: 
     external: true
     
     
