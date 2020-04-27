@@ -36,7 +36,7 @@ services:
       - "traefik.http.routers.redirs.middlewares=redirect-to-https"
       
       # Dashboard
-      - "traefik.http.routers.traefik.rule=Host(`tlips.be`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.tlips.be`)"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=traefik-auth"
       - "traefik.http.routers.traefik.tls.certresolver=myresolver"
