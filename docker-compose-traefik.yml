@@ -69,5 +69,7 @@ services:
 
      
 networks:
-  traefik: {}
-  monitor: {}
+  traefik:
+    external: true
+  monitor: 
+    external: true
