@@ -18,7 +18,7 @@ services:
     image: prom/node-exporter:latest
     container_name: node-exporter
     networks:
-      monitor
+      - monitor
   
   cadvisor:
     image: google/cadvisor:latest
