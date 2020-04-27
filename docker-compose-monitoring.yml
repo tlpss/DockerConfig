@@ -11,6 +11,8 @@ services:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
     - cadvisor
+    networks:
+    - monitor
   cadvisor:
     image: google/cadvisor:latest
     container_name: cadvisor
@@ -23,10 +25,13 @@ services:
     - /var/lib/docker/:/var/lib/docker:ro
     depends_on:
     - redis
+    networks: 
+    - monitor
   redis:
     image: redis:latest
     container_name: redis
-    
+    networks:
+    - monitor
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -34,11 +39,18 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=pass
       - GF_LOG_MODE=console file
       - GF_LOG_LEVEL=info
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
     depends_on:
       - prometheus
     ports:
       - "3000:3000"
     volumes:
       - $PWD/../Volumes/grafana:/var/lib/grafana
+    networks: 
+    - monitor
+    
+networks:
+  monitor:
+    external: true
     
     
