@@ -33,7 +33,6 @@ services:
     networks: 
     - monitor
   
-  node
   redis:
     image: redis:latest
     container_name: redis
