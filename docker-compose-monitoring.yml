@@ -11,6 +11,8 @@ services:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     depends_on:
     - cadvisor
+    ports:
+    - 9100:9100
     networks:
     - monitor
   
