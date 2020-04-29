@@ -50,7 +50,6 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=pass
       - GF_LOG_MODE=console file
       - GF_LOG_LEVEL=info
-      - GF_INSTALL_PLUGINS=grafana-piechart-panel
     depends_on:
       - prometheus
     #ports:
